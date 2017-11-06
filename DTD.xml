@@ -2,30 +2,24 @@
 
 <!DOCTYPE trains [
 <!ELEMENT trains (service)>
-<!ELEMENT service (nom_service,ligne+)>
-	<!ELEMENT nom_service (#PCDATA)>
-
-	<!ATTLIST ligne 
-		id CDATA  #REQUIRED
-		lettre_ligne CDATA  #REQUIRED >
-	<!ELEMENT ligne (nom_ligne,donnee+)>
-		<!ELEMENT nom_ligne (#PCDATA)>
-		<!ELEMENT donnee (Date,Taux,Nombre)>
-			<!ELEMENT Date (#PCDATA)>
-			<!ELEMENT Taux (#PCDATA)>
-			<!ELEMENT Nombre (#PCDATA)>
+<!ATTLIST service 
+	id CDATA  #REQUIRED
+	ligne CDATA  #REQUIRED >
+<!ELEMENT service (nom,donnee+)>
+	<!ELEMENT nom (#PCDATA)>
+	<!ELEMENT donnee (Date,Taux,Nombre)>
+		<!ELEMENT Date (#PCDATA)>
+		<!ELEMENT Taux (#PCDATA)>
+		<!ELEMENT Nombre (#PCDATA)>
 ]>
 
 <trains >
-	<service>
-		<nom_service>RER</nom_service>
-		<ligne id = '1' lettre_ligne = 'C' >
-			<nom_ligne>RER C</nom_ligne> 
-			<donnee>   
-				<Date> 23-6-10</Date>
-				<Taux> 23-6-10</Taux>
-				<Nombre> 23-6-10</Nombre>
-			</donnee>
-		</ligne>
+	<service  id = '1' ligne = 'R'>
+		<nom> nom</nom>
+		<donnee> 
+			<Date> 23-6-10</Date>
+			<Taux> 23-6-10</Taux>
+			<Nombre> 23-6-10</Nombre>
+		</donnee>
 	</service>
 </trains>
