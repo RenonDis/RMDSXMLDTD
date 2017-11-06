@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!DOCTYPE trains [
-<!ELEMENT trains (service)>
+<!ELEMENT trains (service+)>
 <!ELEMENT service (nom_service,ligne+)>
 	<!ELEMENT nom_service (#PCDATA)>
 
