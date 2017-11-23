@@ -1,0 +1,303 @@
+    /* ---------------------------------------------------------------------------------------------------------- 
+    01 Sensible defaults ----------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------------- */
+
+*                               { margin:0; padding:0; }
+
+    /* ---------------------------------------------------------------------------------------------------------- 
+    02 Typography -----------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------------- */
+
+/* Rendering */
+body,
+input,
+textarea { 
+    color: #333;
+    -webkit-font-smoothing:antialiased; } 
+
+/* Families */
+body   { 
+    font-family:"Century gothic", verdana, arial, sans-serif; 
+    /* Weights from Typekit: 300, 400 */ 
+    }
+    
+h2,
+h3  { 
+    font-family:"Century gothic", arial, verdana, sans-serif; 
+    /* Weights from Typekit: 200, 900 */ 
+    }
+
+body { 
+    margin:5%;
+    }
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6  { font-weight:normal; }
+
+h1  {
+    font-size:2.5em;
+    margin:4%;
+    text-align:center;
+    margin-bottom:6%;
+    }
+
+h2  { 
+    font-size:2em;
+    margin:4%; 
+    margin-bottom:3%;
+    padding:1% 3%;
+    }
+h3  { 
+    display:block;
+    border-left: thick double #000;
+    margin-top:1%; 
+    margin-bottom:1%;
+    padding:0.5% 5%;
+    margin-left:10%;
+    font-size:1.5em; 
+    letter-spacing:1px; 
+    }
+
+/* Links */
+body a   { 
+    border-bottom:1px solid #333;
+    color: #333; 
+    text-decoration: none; 
+    -moz-transition: color 0.2s ease-in-out; 
+    -ms-transition: color 0.2s ease-in-out; 
+    -o-transition: color 0.2s ease-in-out; 
+    -webkit-transition: color 0.2s ease-in-out; 
+    transition: color 0.2s ease-in-out;
+    -moz-transition: border-color 0.2s ease-in-out; 
+    -ms-transition: border-color 0.2s ease-in-out; 
+    -o-transition: border-color 0.2s ease-in-out; 
+    -webkit-transition: border-color 0.2s ease-in-out; 
+    transition: border-color 0.2s ease-in-out; 
+    transition: all 0.2s ease-in-out;
+    }
+body a:hover { 
+    color: #000;
+    border-color: #000;
+    }
+
+section.intro div.summary p a,
+
+/* Paragraph styles */
+p,
+li  { 
+    font-size:1em; 
+    font-weight:400; /* Regular */ 
+    line-height:1.5em; 
+    margin-right: 10%;
+    }
+    
+h2  {
+    font-weight:300; 
+    letter-spacing:2px; 
+    text-transform:uppercase; 
+    }
+    
+section.intro div.summary p:last-child, 
+div.requirements p:last-child   { 
+    border-top:1px solid #ea2e49; 
+    margin-top:1em; 
+    padding-top:1.5em; 
+    }
+
+/* Other bits & bobs */
+em,
+strong  {
+    font-style:normal; 
+    font-weight:400; 
+    }
+
+    /* ---------------------------------------------------------------------------------------------------------- 
+    03 Layout ---------------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------------- */
+
+html { 
+    background: #fff;
+    }
+
+footer  { 
+    display:none;
+    position: relative;
+    background: rgba(255,255,255,0.9); 
+    margin-top: 10%; 
+    padding:1em 5%; 
+    bottom: 0;
+    margin-bottom: 0%; 
+    /*background-size: 100% 400%;*/
+    }
+    
+.header {
+    background: rgba(255,255,255,1);
+    margin:0px auto;
+    box-shadow: 1px 1px 3px #333;
+    }
+
+code {
+    white-space: pre-wrap;
+    display: block;
+    }
+
+    /* ---------------------------------------------------------------------------------------------------------- 
+    04 Media queries (using a mobile-first approach) ------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------------- */
+
+/* 1 and up */  
+@media screen and (min-width:1px) {
+
+    body                        { font-size:85%; }
+
+}
+
+
+/* 550 and up */    
+@media screen and (min-width:550px) {
+
+}
+
+/* 650 and up */    
+@media screen and (min-width:0px) {
+
+    div.benefits                { margin-top:12%; width:30%; }
+    div.requirements            { width:69%; }
+    .menu {display:none;}
+}
+
+/* 700 and up */    
+@media screen and (min-width:700px) {
+
+    body                        { font-size:80%; }
+    
+
+}
+
+/* 800 and up */    
+@media screen and (min-width:800px) {
+
+    body                        { font-size:90%; }
+    .menu {display:none;}
+}
+
+/* 900 and up */    
+@media screen and (min-width:900px) {
+
+    body                        { font-size:100%; }
+    .menu {display:block;}
+}
+
+/* 1500 and up */   
+@media screen and (min-width:1500px) {
+
+    body                        { font-size:100%; }
+
+}
+
+/* 1800 and up */   
+@media screen and (min-width:1800px) {
+
+    body                        { font-size:105%; }
+}
+
+/* 2100 and up */   
+@media screen and (min-width:2100px) {
+
+    body                        { font-size:110%; }
+
+}
+
+
+/* 2500 and up */   
+@media screen and (min-width:2500px) {
+
+    body                        { font-size:120%; }
+
+}
+
+
+body                { width:100%; }
+
+    /* ---------------------------------------------------------------------------------------------------------- 
+    05 Tables ---------------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------------- */
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 2px 2px 5px #aaaaaa;
+     
+}   
+
+td, th {
+    border: 0px;
+    text-align: center;
+    padding: 7px;
+}
+
+thead th:first-of-type {
+}
+
+thead th:last-of-type {
+}
+
+tr {
+    background-color: ;
+    }
+
+tr:nth-child(even){
+    background-color: ;
+    }
+
+tr:hover {
+    background-color: ;
+    border: 1px solid black;
+    transition: 0.2s;
+    } 
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: ;
+    color: #333;
+}
+    
+.display td {
+    background-color: ;
+    }
+
+thead {}
+
+.flat {
+    box-shadow: none;
+}
+
+    /* ---------------------------------------------------------------------------------------------------------- 
+    06 Button stuff ---------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------------- */
+    
+.button {
+    border: 2px solid #666;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.3);
+    color: #333;
+    padding: 2% 6%;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    /*transition-duration: 0.3s;*/
+    font-family:"Century gothic", verdana, arial, sans-serif;
+    font-size: 16px;
+    margin: 4%;
+}
+
+.button:hover {
+    border: 2px solid #000;
+    color: #000;
+    background-color: rgba(255,255,255,0.7);
+}  
