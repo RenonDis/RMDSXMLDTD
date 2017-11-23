@@ -2191,4 +2191,10 @@
       </donnee>
     </ligne>
   </service>
+  <encart>
+    <legende_titre>L&#233;gende :</legende_titre>
+    <legende>Date : l'ann&#233;e et le mois o&#249; les donn&#233;es ont &#233;t&#233; enregistr&#233;es</legende>
+    <legende>Taux : le taux de ponctualit&#233; au long du mois</legende>
+    <legende>Nombre : Le nombre de voyageurs &#224; l'heure pour un voyageur en retard</legende>
+  </encart>
 </trains>

@@ -1,4 +1,4 @@
-<!ELEMENT trains (service+)>
+<!ELEMENT trains (service+,encart)>
 <!ELEMENT service (nom_service,ligne+)>
         <!ELEMENT nom_service (#PCDATA)>
 
@@ -11,4 +11,7 @@
                         <!ELEMENT Date (#PCDATA)>
                         <!ELEMENT Taux (#PCDATA)>
                         <!ELEMENT Nombre (#PCDATA)>
+<!ELEMENT encart (legende_titre,legende+)>
+	<!ELEMENT legende_titre (#PCDATA)>
+	<!ELEMENT legende (#PCDATA)>
 

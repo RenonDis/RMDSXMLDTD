@@ -84,6 +84,21 @@ for row in rows_list:
     Nombre.text = str(roundedNumber)
     
 
+# =============== Encart pour expliquer les en-têtes =================
+encart =  etree.SubElement(XmlDoc,'encart')
+
+legende_Titre = etree.SubElement(encart,'legende_titre')
+legende_Titre.text = u"Légende :"
+
+legende_Date = etree.SubElement(encart,'legende')
+legende_Date.text = u"Date : l'année et le mois où les données ont été enregistrées"
+
+legende_Taux = etree.SubElement(encart,'legende')
+legende_Taux.text = u"Taux : le taux de ponctualité au long du mois"
+
+legende_Nombre = etree.SubElement(encart,'legende')
+legende_Nombre.text = u"Nombre : Le nombre de voyageurs à l'heure pour un voyageur en retard"
+
 document_string = (etree.tostring(XmlDoc, pretty_print=True))
 
 
@@ -91,6 +106,8 @@ document_string = (etree.tostring(XmlDoc, pretty_print=True))
 Header = """<?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE trains SYSTEM "ponctualite-mensuelle-transilien.dtd">
 """
+
+
 
 
 

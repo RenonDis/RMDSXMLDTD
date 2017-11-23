@@ -22,33 +22,35 @@ Validation</title>
 <h2>Structure du document XML</h2>
 <p> La structure du XML est factorisée au possible : même le type de ligne (RER ou transilien) a mis en facteur. Ainsi, nous n'avons absolument aucune donnée redondante.
 	<code>
-&lt;trains&gt;
-	&lt;service&gt;
-		&lt;nom_service&gt;RER&lt;/nom_service&gt;
-		&lt;ligne id="TRA_1" lettre_ligne="A"&gt;
-			&lt;nom_ligne&gt;RER A&lt;/nom_ligne&gt;
-			&lt;donnee&gt;
-				&lt;Date&gt;Date&lt;/Date&gt;
-				&lt;Taux&gt;Taux de ponctualit&#233; &lt;/Taux&gt;
-				&lt;Nombre&gt;Nombre de voyageurs &#224; l'heure pour un voyageur en retard&lt;/Nombre&gt;
-			&lt;/donnee&gt;
-			&lt;donnee&gt;
-				&lt;Date&gt;2013-01&lt;/Date&gt;
-				&lt;Taux&gt;83.6&lt;/Taux&gt;
-				&lt;Nombre&gt;5.1&lt;/Nombre&gt;
-			&lt;/donnee&gt;
-		&lt;/ligne&gt;
-	&lt;/service&gt;
-&lt;/trains&gt;
+&lt;!ELEMENT trains (service+,encart)&gt;
+&lt;!ELEMENT service (nom_service,ligne+)&gt;
+		&lt;!ELEMENT nom_service (#PCDATA)&gt;
+		&lt;!ATTLIST ligne
+			id CDATA  #REQUIRED
+			lettre_ligne CDATA  #REQUIRED &gt;
+		&lt;!ELEMENT ligne (nom_ligne,donnee+)&gt;
+			&lt;!ELEMENT nom_ligne (#PCDATA)&gt;
+			&lt;!ELEMENT donnee (Date,Taux,Nombre)&gt;
+				&lt;!ELEMENT Date (#PCDATA)&gt;
+				&lt;!ELEMENT Taux (#PCDATA)&gt;
+				&lt;!ELEMENT Nombre (#PCDATA)&gt;
+&lt;!ELEMENT encart (legende_titre,legende+)&gt;
+	&lt;!ELEMENT legende_titre (#PCDATA)&gt;
+	&lt;!ELEMENT legende (#PCDATA)&gt;
+
 	</code>
 </p>
+
+<h2>Ajout d'en-têtes</h2>
+<p>Au sommet de chacune des tables figure une en-tête. Comme l'une des données (le nombre de voyageurs à l'heure pour un oyageur en retard) a un nom particulièrement long, le nom complet des en-têtes est remplacé par un seul nom (Les en-têtes deviennent Date, Taux et Nombre). UI,n encart à la fin du document rappelle les titres complets. 
+</p>
+
 
 <h2>Converstisseur csv vers xml</h2>
 <p>Le convertisseur utilise la bibliothèque Python <em>etree</em> pour générer le code XML. Les premières balises sont générées à la main : on place les balises <em>trains</em>, <em>service</em> et les <em>nom_service</em> correspondant à <em>RER</em> et <em>Transilien</em> dans le document XML en formation. Ensuite, le convertisseur Python parcourt le document csv, et examine chaque ligne du fichier. Si la donnée correspond à une ligne (par exemple RER A) déjà rencontrée, les données (date, taux de ponctualité, nombre de voyageurs à l'heure) sont ajoutées à l'intérieur de la balise <em>ligne</em> correspondante. Sinon, une bnouvelle balise <em>ligne</em> est créée, et les données y sont ajoutées.
 </p>
 <p>Il aurait été possible d'appliquer cette méthode pour le service (conserver une liste des services déjà rencontrés, pour ne créer de nouvelle balise que lorsqu'un nouveau service aparaît), mais comme il n'y a que deux services, cela aurait seulement rendu le code Python plus complexe.
 </p>
-
 
 
 
