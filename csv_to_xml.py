@@ -2,6 +2,7 @@
 from lxml import etree
 import csv 
 
+valeur_vide = 'NaN' # ce qu'on affiche lorsqu'il manque un entier
 
 
 #  ===  Ouverture du csv ===
@@ -49,19 +50,22 @@ for row in rows_list:
     # ================== données ====================
     # on ajoute ensuite les données
     ligne = AddedIds[ThisId]   
-    print(row)
+
     donnee = etree.SubElement(ligne,'donnee')
+
     Date = etree.SubElement(donnee,'Date')
-    Date.text = row[1].decode('ISO-8859-1')
+    Date.text = row[1].decode('ISO-8859-1') 
+
     Taux = etree.SubElement(donnee,'Taux')
     # On ajoute la valeur du taux, arrondie à 1 decimale près :
-    roundedNumber = round(float(row[5]),1)  if row[5] != '' else ''
-        # il y a une onnee vide dans les taux. On ne peut pas la convertir en 
-        # float, donc on la laisse
+    roundedNumber = round(float(row[5]),1)  if row[5] != '' else valeur_vide
+        # il y a une case vide dans les taux. On ne peut pas la convertir en 
+        # float, donc on la laisse telle quelle
     Taux.text = str(roundedNumber)
     
     Nombre = etree.SubElement(donnee,'Nombre')
-    roundedNumber = round(float(row[6]),1)  # arrondi à 1 decimale près
+    roundedNumber = round(float(row[6]),1) if row[6] != '' else valeur_vide 
+        # arrondi à 1 decimale près
     Nombre.text = str(roundedNumber)
     
 
@@ -69,24 +73,8 @@ document_string = (etree.tostring(XmlDoc, pretty_print=True))
 
 
 
-DTD = """<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<!DOCTYPE trains [
-<!ELEMENT trains (service+)>
-<!ELEMENT service (nom_service,ligne+)>
-        <!ELEMENT nom_service (#PCDATA)>
-
-        <!ATTLIST ligne
-                id CDATA  #REQUIRED
-                lettre_ligne CDATA  #REQUIRED >
-        <!ELEMENT ligne (nom_ligne,donnee+)>
-                <!ELEMENT nom_ligne (#PCDATA)>
-                <!ELEMENT donnee (Date,Taux,Nombre)>
-                        <!ELEMENT Date (#PCDATA)>
-                        <!ELEMENT Taux (#PCDATA)>
-                        <!ELEMENT Nombre (#PCDATA)>
-]>
-
+Header = """<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE trains SYSTEM "ponctualite-mensuelle-transilien.dtd">
 """
 
 
@@ -96,7 +84,7 @@ DTD = """<?xml version="1.0" encoding="ISO-8859-1"?>
 
 
 f = open('ponctualite-mensuelle-transilien.xml','w')
-f.write(DTD+document_string)
+f.write(Header+document_string)
 f.close()
 
 

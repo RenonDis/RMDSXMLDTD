@@ -18,7 +18,8 @@ Validation</title>
 <p>Dans ce BE nous allons construire une application XHTML valide pour mettre en forme des données relatives à la ponctualté mensuelle des trains de banlieue parisiens entre janvier 2013 et août 2015.</p>
 
 <h1>Partie A : ce qu'on a essayé</h1>
-<h2>Converstisseur csv vers xml</h2>
+
+<h2>Structure du document XML</h2>
 <p> La structure du XML est factorisée au possible : même le type de ligne (RER ou transilien) a mis en facteur. Ainsi, nous n'avons aucune donnée redondante.
 	<code>
 &lt;trains&gt;
@@ -35,20 +36,21 @@ Validation</title>
 	&lt;/service&gt;
 &lt;/trains&gt;
 	</code>
-
 </p>
 
-<p>Le convertisseur utilise la bibliothèque Python <em>etree</em> pour générer le code XML. 
-
+<h2>Converstisseur csv vers xml</h2>
+<p>Le convertisseur utilise la bibliothèque Python <em>etree</em> pour générer le code XML. Les premières balises sont générées à la main : on place les balises <em>trains</em>, <em>service</em> et les <em>nom_service</em> correspondant à <em>RER</em> et <em>Transilien</em> dans le document XML en formation. Ensuite, le convertisseur Python parcourt le document csv, et examine chaque ligne du fichier. Si la donnée correspond à une ligne (par exemple RER A) déjà rencontrée, les données (date, taux de ponctualité, nombre de voyageurs à l'heure) sont ajoutées à l'intérieur de la balise <em>ligne</em> correspondante. Sinon, une bnouvelle balise <em>ligne</em> est créée, et les données y sont ajoutées.
+</p>
+<p>Il aurait été possible d'appliquer cette méthode pour le service (conserver une liste des services déjà rencontrés, pour ne créer de nouvelle balise que lorsqu'un nouveau service aparaît), mais comme il n'y a que deux services, cela aurait seulement rendu le code Python plus complexe.
 </p>
 
 
 
 
-
+<h2>Ajout de la DTD</h2>
 <p>Nous avons choisi d'inclure la DTD directement dansle script Python, le fichier DTD.xml fourni ne sert que d'illustration. 	
 	<code>
-DTD = """&gt;?xml version="1.0" encoding="ISO-8859-1"?>
+DTD = """&lt;?xml version="1.0" encoding="ISO-8859-1"?>
 
 &lt;!DOCTYPE trains [
 &lt;!ELEMENT trains (service+)&gt;
@@ -56,15 +58,36 @@ etc ...
 """
 
 f = open('ponctualite-mensuelle-transilien.xml','w')
-f.write(DTD + le_document_gé)
+f.write(DTD + le_document_généré_par_Python)
 f.close()
 	</code>
 Ainsi, même un parseur qui n'accède pas aux DTD externes pourra valider le document. 
 </p>
 
+<h2>Affichage des valeurs numériques</h2>
+<p>Pour faciliter la mise en page, toutes les valeurs numériques sont affichées à une décimale près. Les valeurs qui comportaient trop de décimales ont été converties en nombres sous Python, arrondies, puis re-converties en chaînes de caractères. 
+</p>
+<p>Le seul problème posé par cette méthode est qu'une des cases (le taux de ponctualité d'un des RER B) est vide, ce qui provoque une erreur quand Python essaye de les convertir en réel. Pour éviter cela, on ne convertit en nombre que lorsque la case est non vide. Lorsqu'on rencontre une case vide, le programme y écrit le mot 'NaN' (il est préférable de choisir une chaîne aussi longue que les vraies valeurs pour la mise en page)
+<code>
+    roundedNumber = round(float(case),1)  if case != '' else valeur_vide
+		# valeur_vide est une variable prédéfinie qui contient la chaîne de caractères 
+		# qu'on souhaite afficher si la case est vide (dans notre cas,  valeur_vide = 'NaN')
+    Taux.text = str(roundedNumber)  
+</code>
+Remarque : dans l'exemple ci-dessus, et contrairement à ce que son nom indique, roundedNumber est une chaîne de caractères lorsque la case est vide. Python ne renvoie pas d'erreur lorsqu'on appelle la fonction str() (conversion en chaîne de caractères) avec une chaîne. 
+</p>
 
 <h1>Partie B : ce qu'on a essayé, qui marche pas</h1>
 <p>Problèmes adaptation avec CSS ?</p>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
