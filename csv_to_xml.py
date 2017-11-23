@@ -104,8 +104,8 @@ document_string = (etree.tostring(XmlDoc, pretty_print=True))
 
 
 Header = """<?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE trains SYSTEM "ponctualite-mensuelle-transilien.dtd">
 <?xml-stylesheet href="style.css" type="text/css"?>
+<!DOCTYPE trains SYSTEM "ponctualite-mensuelle-transilien.dtd">
 """
 
 
