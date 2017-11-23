@@ -14,12 +14,14 @@ Validation</title>
 
 <body>
 
-<h1>Introduction</h1>
+<h1>Développement d'une application XML munie d'une DTD - Visualisation, Validation</h1>
+
+<h2>Introduction</h2>
 <p>Dans ce BE nous allons construire une application XHTML valide pour mettre en forme des données relatives à la ponctualté mensuelle des trains de banlieue parisiens entre janvier 2013 et août 2015. Le présent rapport ne résume pas toute la démarche, il ne mentionne que les points caratéristiques.</p>
 
-<h1>Partie A : ce qu'on a essayé</h1>
+<h2>Partie A : ce qu'on a essayé</h2>
 
-<h2>Structure du document XML</h2>
+<h3>Structure du document XML</h3>
 <p> La structure du XML est factorisée au possible : même le type de ligne (RER ou transilien) a mis en facteur. Ainsi, nous n'avons absolument aucune donnée redondante.
 	<code>
 &lt;!ELEMENT trains (service+,encart)&gt;
@@ -40,12 +42,12 @@ Validation</title>
 	</code>
 </p>
 
-<h2>Ajout d'en-têtes</h2>
+<h3>Ajout d'en-têtes</h3>
 <p>Au sommet de chacune des tables figure une en-tête. Comme l'une des données (le nombre de voyageurs à l'heure pour un oyageur en retard) a un nom particulièrement long, le nom complet des en-têtes est remplacé par un seul nom (Les en-têtes deviennent Date, Taux et Nombre). UI,n encart à la fin du document rappelle les titres complets. 
 </p>
 
 
-<h2>Converstisseur csv vers xml</h2>
+<h3>Convertisseur csv vers xml</h3>
 <p>Le convertisseur utilise la bibliothèque Python <em>etree</em> pour générer le code XML. Les premières balises sont générées à la main : on place les balises <em>trains</em>, <em>service</em> et les <em>nom_service</em> correspondant à <em>RER</em> et <em>Transilien</em> dans le document XML en formation. Ensuite, le convertisseur Python parcourt le document csv, et examine chaque ligne du fichier. Si la donnée correspond à une ligne (par exemple RER A) déjà rencontrée, les données (date, taux de ponctualité, nombre de voyageurs à l'heure) sont ajoutées à l'intérieur de la balise <em>ligne</em> correspondante. Sinon, une bnouvelle balise <em>ligne</em> est créée, et les données y sont ajoutées.
 </p>
 <p>Il aurait été possible d'appliquer cette méthode pour le service (conserver une liste des services déjà rencontrés, pour ne créer de nouvelle balise que lorsqu'un nouveau service aparaît), mais comme il n'y a que deux services, cela aurait seulement rendu le code Python plus complexe.
@@ -53,11 +55,11 @@ Validation</title>
 
 
 
-<h2>Ajout de la DTD</h2>
+<h3>Ajout de la DTD</h3>
 <p>Nous avons choisi d'inclure la DTD dans un fichier séparé, <em>ponctualite-mensuelle-transilien.dtd</em>. Nous aurions pu l'inclure directement dans le fichier (en demandant à Python d'ouvrir le fichier en <em>.dtd</em> et de copier son contenu dans le <em>.xml</em>, voire en écrivant directement la DTD dans le code Python), mais garder une DTD externe est plus propre.   
 </p>
 
-<h2>Affichage des valeurs numériques</h2>
+<h3>Affichage des valeurs numériques</h3>
 <p>Pour faciliter la mise en page, toutes les valeurs numériques sont affichées à une décimale près. Les valeurs qui comportaient trop de décimales ont été converties en nombres sous Python, arrondies, puis re-converties en chaînes de caractères. 
 </p>
 <p>Le seul problème posé par cette méthode est qu'une des cases (le taux de ponctualité d'un des RER B) est vide, ce qui provoque une erreur quand Python essaye de les convertir en réel. Pour éviter cela, on ne convertit en nombre que lorsque la case est non vide. Lorsqu'on rencontre une case vide, le programme y écrit le mot 'NaN' (il est préférable pour la mise en page de choisir une chaîne aussi longue que les vraies valeurs)
@@ -70,11 +72,11 @@ Validation</title>
 Remarque : dans l'exemple ci-dessus, et contrairement à ce que son nom indique, roundedNumber est une chaîne de caractères lorsque la case est vide. Python ne renvoie pas d'erreur lorsqu'on appelle la fonction str() (conversion en chaîne de caractères) avec une chaîne. 
 </p>
 
-<h1>Partie B : ce qu'on a essayé, qui marche pas</h1>
+<h2>Partie B : ce qu'on a essayé, qui marche pas</h2>
 <p>Problèmes adaptation avec CSS ?</p>
 
 
-<h1>Conclusion</h1>
+<h2>Conclusion</h2>
 <p>Ce BE nous aura permis de mettre en pratique les premiers cours théoriques que nous avons reçu. Une certaine partie du code que nous avons écrit ne peut être utilisée qu'avec le fichier des ponctualités des transiliens, mais le code pourrait être aisément adapté à d'autres exemples. 
 </p>
 
