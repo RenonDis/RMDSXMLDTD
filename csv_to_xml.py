@@ -23,9 +23,11 @@ with open('ponctualite-mensuelle-transilien.csv', 'r') as f:
 # ==========================================================    
 
 XmlDoc = etree.Element("trains")
+
 serviceRER = etree.SubElement(XmlDoc,'service')
 nom_serviceRER = etree.SubElement(serviceRER,'nom_service')
 nom_serviceRER.text = 'RER'
+
 serviceTrans = etree.SubElement(XmlDoc,'service')
 nom_serviceTrans = etree.SubElement(serviceTrans,'nom_service')
 nom_serviceTrans.text = 'Transilien'
@@ -47,8 +49,7 @@ for row in rows_list:
         nom_ligne.text = row[4].decode('ISO-8859-1')  # le .decode sert aux accents
         AddedIds[ThisId] = ligne  # on ajoute le couple id:objet dans le dictionnaire
 
-    # ================== données ====================
-    # on ajoute ensuite les données
+    # ================== ajout des données ====================
     ligne = AddedIds[ThisId]   
 
     donnee = etree.SubElement(ligne,'donnee')
@@ -79,15 +80,9 @@ Header = """<?xml version="1.0" encoding="ISO-8859-1"?>
 
 
 
-
-
-
-
 f = open('ponctualite-mensuelle-transilien.xml','w')
 f.write(Header+document_string)
 f.close()
-
-
 
 
 

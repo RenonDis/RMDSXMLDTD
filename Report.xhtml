@@ -15,12 +15,12 @@ Validation</title>
 <body>
 
 <h1>Introduction</h1>
-<p>Dans ce BE nous allons construire une application XHTML valide pour mettre en forme des données relatives à la ponctualté mensuelle des trains de banlieue parisiens entre janvier 2013 et août 2015.</p>
+<p>Dans ce BE nous allons construire une application XHTML valide pour mettre en forme des données relatives à la ponctualté mensuelle des trains de banlieue parisiens entre janvier 2013 et août 2015. Le présent rapport ne résume pas toute la démarche, il ne mentionne que les points caratéristiques.</p>
 
 <h1>Partie A : ce qu'on a essayé</h1>
 
 <h2>Structure du document XML</h2>
-<p> La structure du XML est factorisée au possible : même le type de ligne (RER ou transilien) a mis en facteur. Ainsi, nous n'avons aucune donnée redondante.
+<p> La structure du XML est factorisée au possible : même le type de ligne (RER ou transilien) a mis en facteur. Ainsi, nous n'avons absolument aucune donnée redondante.
 	<code>
 &lt;trains&gt;
 	&lt;service&gt;
@@ -48,26 +48,13 @@ Validation</title>
 
 
 <h2>Ajout de la DTD</h2>
-<p>Nous avons choisi d'inclure la DTD directement dansle script Python, le fichier DTD.xml fourni ne sert que d'illustration. 	
-	<code>
-DTD = """&lt;?xml version="1.0" encoding="ISO-8859-1"?>
-
-&lt;!DOCTYPE trains [
-&lt;!ELEMENT trains (service+)&gt;
-etc ...
-"""
-
-f = open('ponctualite-mensuelle-transilien.xml','w')
-f.write(DTD + le_document_généré_par_Python)
-f.close()
-	</code>
-Ainsi, même un parseur qui n'accède pas aux DTD externes pourra valider le document. 
+<p>Nous avons choisi d'inclure la DTD dans un fichier séparé, <em>ponctualite-mensuelle-transilien.dtd</em>. Nous aurions pu l'inclure directement dans le fichier (en demandant à Python d'ouvrir le fichier en <em>.dtd</em> et de copier son contenu dans le <em>.xml</em>, voire en écrivant directement la DTD dans le code Python), mais garder une DTD externe est plus propre.   
 </p>
 
 <h2>Affichage des valeurs numériques</h2>
 <p>Pour faciliter la mise en page, toutes les valeurs numériques sont affichées à une décimale près. Les valeurs qui comportaient trop de décimales ont été converties en nombres sous Python, arrondies, puis re-converties en chaînes de caractères. 
 </p>
-<p>Le seul problème posé par cette méthode est qu'une des cases (le taux de ponctualité d'un des RER B) est vide, ce qui provoque une erreur quand Python essaye de les convertir en réel. Pour éviter cela, on ne convertit en nombre que lorsque la case est non vide. Lorsqu'on rencontre une case vide, le programme y écrit le mot 'NaN' (il est préférable de choisir une chaîne aussi longue que les vraies valeurs pour la mise en page)
+<p>Le seul problème posé par cette méthode est qu'une des cases (le taux de ponctualité d'un des RER B) est vide, ce qui provoque une erreur quand Python essaye de les convertir en réel. Pour éviter cela, on ne convertit en nombre que lorsque la case est non vide. Lorsqu'on rencontre une case vide, le programme y écrit le mot 'NaN' (il est préférable pour la mise en page de choisir une chaîne aussi longue que les vraies valeurs)
 <code>
     roundedNumber = round(float(case),1)  if case != '' else valeur_vide
 		# valeur_vide est une variable prédéfinie qui contient la chaîne de caractères 
