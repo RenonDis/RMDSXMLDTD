@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="style_report.css" type="text/css"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -17,9 +18,50 @@ Validation</title>
 <p>Dans ce BE nous allons construire une application XHTML valide pour mettre en forme des données relatives à la ponctualté mensuelle des trains de banlieue parisiens entre janvier 2013 et août 2015.</p>
 
 <h1>Partie A : ce qu'on a essayé</h1>
-<h2>Document 1</h2>
-<p>Description du document
+<h2>Converstisseur csv vers xml</h2>
+<p> La structure du XML est factorisée au possible : même le type de ligne (RER ou transilien) a mis en facteur. Ainsi, nous n'avons aucune donnée redondante.
+	<code>
+&lt;trains&gt;
+	&lt;service&gt;
+		&lt;nom_service&gt;RER&lt;/nom_service&gt;
+		&lt;ligne id="TRA_1" lettre_ligne="A"&gt;
+			&lt;nom_ligne&gt;RER A&lt;/nom_ligne&gt;
+			&lt;donnee&gt;
+				&lt;Date&gt;2013-01&lt;/Date&gt;
+				&lt;Taux&gt;83.6&lt;/Taux&gt;
+				&lt;Nombre&gt;5.1&lt;/Nombre&gt;
+			&lt;/donnee&gt;
+		&lt;/ligne&gt;
+	&lt;/service&gt;
+&lt;/trains&gt;
+	</code>
+
 </p>
+
+<p>Le convertisseur utilise la bibliothèque Python <em>etree</em> pour générer le code XML. 
+
+</p>
+
+
+
+
+
+<p>Nous avons choisi d'inclure la DTD directement dansle script Python, le fichier DTD.xml fourni ne sert que d'illustration. 	
+	<code>
+DTD = """&gt;?xml version="1.0" encoding="ISO-8859-1"?>
+
+&lt;!DOCTYPE trains [
+&lt;!ELEMENT trains (service+)&gt;
+etc ...
+"""
+
+f = open('ponctualite-mensuelle-transilien.xml','w')
+f.write(DTD + le_document_gé)
+f.close()
+	</code>
+Ainsi, même un parseur qui n'accède pas aux DTD externes pourra valider le document. 
+</p>
+
 
 <h1>Partie B : ce qu'on a essayé, qui marche pas</h1>
 <p>Problèmes adaptation avec CSS ?</p>
