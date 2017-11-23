@@ -7,8 +7,8 @@
       <nom_ligne>RER A</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-01</Date>
@@ -175,8 +175,8 @@
       <nom_ligne>RER B</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-02</Date>
@@ -343,8 +343,8 @@
       <nom_ligne>RER D</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-03</Date>
@@ -511,8 +511,8 @@
       <nom_ligne>RER E</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-05</Date>
@@ -679,8 +679,8 @@
       <nom_ligne>RER C</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2014-05</Date>
@@ -850,8 +850,8 @@
       <nom_ligne>Paris Nord Ouest</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-02</Date>
@@ -1018,8 +1018,8 @@
       <nom_ligne>Paris Nord Cr&#233;py</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-02</Date>
@@ -1186,8 +1186,8 @@
       <nom_ligne>Paris Est</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-02</Date>
@@ -1354,8 +1354,8 @@
       <nom_ligne>Paris Saint-Lazare Nord</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-05</Date>
@@ -1522,8 +1522,8 @@
       <nom_ligne>Paris Montparnasse</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-07</Date>
@@ -1690,8 +1690,8 @@
       <nom_ligne>Paris Saint-Lazare Sud</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-08</Date>
@@ -1858,8 +1858,8 @@
       <nom_ligne>La Verri&#232;re - La D&#233;fense</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-09</Date>
@@ -2026,8 +2026,8 @@
       <nom_ligne>Paris Sud Est</nom_ligne>
       <donnee>
         <Date>Date</Date>
-        <Taux>Taux de ponctualit&#233;</Taux>
-        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+        <Taux>Taux</Taux>
+        <Nombre>Nombre</Nombre>
       </donnee>
       <donnee>
         <Date>2013-11</Date>

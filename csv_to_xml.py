@@ -56,10 +56,10 @@ for row in rows_list:
         Date.text = 'Date' 
 
         Taux = etree.SubElement(donnee_enTete,'Taux')
-        Taux.text = u"Taux de ponctualité"
+        Taux.text = "Taux"
     
         Nombre = etree.SubElement(donnee_enTete,'Nombre')
-        Nombre.text = u"Nombre de voyageurs à l'heure pour un voyageur en retard"
+        Nombre.text = "Nombre"
 
 
 
