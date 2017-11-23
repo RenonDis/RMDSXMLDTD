@@ -1,0 +1,17 @@
+<!ELEMENT trains (service+,encart)>
+<!ELEMENT service (nom_service,ligne+)>
+        <!ELEMENT nom_service (#PCDATA)>
+
+        <!ATTLIST ligne
+                id CDATA  #REQUIRED
+                lettre_ligne CDATA  #REQUIRED >
+        <!ELEMENT ligne (nom_ligne,donnee+)>
+                <!ELEMENT nom_ligne (#PCDATA)>
+                <!ELEMENT donnee (Date,Taux,Nombre)>
+                        <!ELEMENT Date (#PCDATA)>
+                        <!ELEMENT Taux (#PCDATA)>
+                        <!ELEMENT Nombre (#PCDATA)>
+<!ELEMENT encart (legende_titre,legende+)>
+	<!ELEMENT legende_titre (#PCDATA)>
+	<!ELEMENT legende (#PCDATA)>
+
