@@ -6,6 +6,11 @@
     <ligne id="TRA_1" lettre_ligne="A">
       <nom_ligne>RER A</nom_ligne>
       <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
+      <donnee>
         <Date>2013-01</Date>
         <Taux>83.6</Taux>
         <Nombre>5.1</Nombre>
@@ -168,6 +173,11 @@
     </ligne>
     <ligne id="TRA_2" lettre_ligne="B">
       <nom_ligne>RER B</nom_ligne>
+      <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
       <donnee>
         <Date>2013-02</Date>
         <Taux>80.3</Taux>
@@ -332,6 +342,11 @@
     <ligne id="TRA_4" lettre_ligne="D">
       <nom_ligne>RER D</nom_ligne>
       <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
+      <donnee>
         <Date>2013-03</Date>
         <Taux>80.0</Taux>
         <Nombre>4.0</Nombre>
@@ -495,6 +510,11 @@
     <ligne id="TRA_5" lettre_ligne="E">
       <nom_ligne>RER E</nom_ligne>
       <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
+      <donnee>
         <Date>2013-05</Date>
         <Taux>95.5</Taux>
         <Nombre>21.2</Nombre>
@@ -657,6 +677,11 @@
     </ligne>
     <ligne id="TRA_3" lettre_ligne="C">
       <nom_ligne>RER C</nom_ligne>
+      <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
       <donnee>
         <Date>2014-05</Date>
         <Taux>91.7</Taux>
@@ -824,6 +849,11 @@
     <ligne id="TRA_6" lettre_ligne="H">
       <nom_ligne>Paris Nord Ouest</nom_ligne>
       <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
+      <donnee>
         <Date>2013-02</Date>
         <Taux>92.7</Taux>
         <Nombre>12.7</Nombre>
@@ -986,6 +1016,11 @@
     </ligne>
     <ligne id="TRA_8" lettre_ligne="K">
       <nom_ligne>Paris Nord Cr&#233;py</nom_ligne>
+      <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
       <donnee>
         <Date>2013-02</Date>
         <Taux>75.2</Taux>
@@ -1150,6 +1185,11 @@
     <ligne id="TRA_11" lettre_ligne="P">
       <nom_ligne>Paris Est</nom_ligne>
       <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
+      <donnee>
         <Date>2013-02</Date>
         <Taux>89.4</Taux>
         <Nombre>8.4</Nombre>
@@ -1312,6 +1352,11 @@
     </ligne>
     <ligne id="TRA_7" lettre_ligne="J">
       <nom_ligne>Paris Saint-Lazare Nord</nom_ligne>
+      <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
       <donnee>
         <Date>2013-05</Date>
         <Taux>91.5</Taux>
@@ -1476,6 +1521,11 @@
     <ligne id="TRA_10" lettre_ligne="N">
       <nom_ligne>Paris Montparnasse</nom_ligne>
       <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
+      <donnee>
         <Date>2013-07</Date>
         <Taux>93.2</Taux>
         <Nombre>13.7</Nombre>
@@ -1638,6 +1688,11 @@
     </ligne>
     <ligne id="TRA_9" lettre_ligne="L">
       <nom_ligne>Paris Saint-Lazare Sud</nom_ligne>
+      <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
       <donnee>
         <Date>2013-08</Date>
         <Taux>89.9</Taux>
@@ -1802,6 +1857,11 @@
     <ligne id="TRA_13" lettre_ligne="U">
       <nom_ligne>La Verri&#232;re - La D&#233;fense</nom_ligne>
       <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
+      <donnee>
         <Date>2013-09</Date>
         <Taux>92.9</Taux>
         <Nombre>13.1</Nombre>
@@ -1964,6 +2024,11 @@
     </ligne>
     <ligne id="TRA_12" lettre_ligne="R">
       <nom_ligne>Paris Sud Est</nom_ligne>
+      <donnee>
+        <Date>Date</Date>
+        <Taux>Taux de ponctualit&#233;</Taux>
+        <Nombre>Nombre de voyageurs &#224; l'heure pour un voyageur en retard</Nombre>
+      </donnee>
       <donnee>
         <Date>2013-11</Date>
         <Taux>82.5</Taux>

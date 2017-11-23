@@ -49,6 +49,20 @@ for row in rows_list:
         nom_ligne.text = row[4].decode('ISO-8859-1')  # le .decode sert aux accents
         AddedIds[ThisId] = ligne  # on ajoute le couple id:objet dans le dictionnaire
 
+        # On ajoute l'en-tête
+        donnee_enTete = etree.SubElement(ligne,'donnee')
+
+        Date = etree.SubElement(donnee_enTete,'Date')
+        Date.text = 'Date' 
+
+        Taux = etree.SubElement(donnee_enTete,'Taux')
+        Taux.text = u"Taux de ponctualité"
+    
+        Nombre = etree.SubElement(donnee_enTete,'Nombre')
+        Nombre.text = u"Nombre de voyageurs à l'heure pour un voyageur en retard"
+
+
+
     # ================== ajout des données ====================
     ligne = AddedIds[ThisId]   
 
