@@ -23,8 +23,7 @@ Validation</title>
 
 <h3>Structure du document XML</h3>
 <p> La structure du XML est factorisée au possible : même le type de ligne (RER ou transilien) a mis en facteur. Ainsi, nous n'avons absolument aucune donnée redondante.
-	<code>
-&lt;!ELEMENT trains (service+,encart)&gt;
+	<code>&lt;!ELEMENT trains (service+,encart)&gt;
 &lt;!ELEMENT service (nom_service,ligne+)&gt;
 		&lt;!ELEMENT nom_service (#PCDATA)&gt;
 		&lt;!ATTLIST ligne
@@ -38,8 +37,7 @@ Validation</title>
 				&lt;!ELEMENT Nombre (#PCDATA)&gt;
 &lt;!ELEMENT encart (legende_titre,legende+)&gt;
 	&lt;!ELEMENT legende_titre (#PCDATA)&gt;
-	&lt;!ELEMENT legende (#PCDATA)&gt;
-	</code>
+	&lt;!ELEMENT legende (#PCDATA)&gt;</code>
 </p>
 
 <h3>Ajout d'en-têtes</h3>
@@ -64,12 +62,10 @@ Validation</title>
 </p>
 <p>Le seul problème posé par cette méthode est qu'une des cases (le taux de ponctualité d'un des RER B) est vide, ce qui provoque une erreur quand Python essaye de la convertir en réel. Pour éviter cela, on ne convertit en nombre que lorsque la case est non vide. Lorsqu'on rencontre une case vide, le programme y écrit le mot 'NaN' (il est préférable pour la mise en page de choisir une chaîne aussi longue que les vraies valeurs).
 </p>
-<code>
-    roundedNumber = round(float(case),1)  if case != '' else valeur_vide
-		# valeur_vide est une variable prédéfinie qui contient la chaîne de caractères 
-		# qu'on souhaite afficher si la case est vide (dans notre cas,  valeur_vide = 'NaN')
-    Taux.text = str(roundedNumber)  
-</code>
+<code>roundedNumber = round(float(case),1)  if case != '' else valeur_vide
+	# valeur_vide est une variable prédéfinie qui contient la chaîne de caractères 
+	# qu'on souhaite afficher si la case est vide (dans notre cas,  valeur_vide = 'NaN')
+Taux.text = str(roundedNumber)</code>
 <p>
 Remarque : dans l'exemple ci-dessus, et contrairement à ce que son nom indique, roundedNumber est une chaîne de caractères lorsque la case est vide. Python ne renvoie pas d'erreur lorsqu'on appelle la fonction str() (conversion en chaîne de caractères) avec une chaîne. 
 </p>
@@ -84,6 +80,22 @@ Remarque : dans l'exemple ci-dessus, et contrairement à ce que son nom indique,
 <p>Ce BE nous aura permis de mettre en pratique les premiers cours théoriques que nous avons reçu. Une certaine partie du code que nous avons écrit ne peut être utilisée qu'avec le fichier des ponctualités des transiliens, mais le code pourrait être aisément adapté à d'autres exemples. 
 </p>
 
+<h2>Annexes</h2>
+<p>Les documents suivants ont été réalisés :
+<ul>
+	<li><a href="ponctualite-mensuelle-transilien.xml">Ponctualité mensuelle du transilien</a></li>
+	<li><a href="ponctualite-mensuelle-transilien.dtd">DTD du document xml</a></li>
+	<li><a href="style_trains.css">Feuille de style du document xml</a></li>
+	<li><a href="style_report.css">Feuille de style du rapport</a></li>
+	
+</ul>
+</p>
+<p>Les programmes suivants ont été réalisés :
+<ul>
+	<li><a href="csv_to_xml.py">csv_to_xml.py</a> : convertisseur de CSV vers XML</li>
+	<li><a href="validator.py">validator.py</a> : validateur XML</li>
+</ul>
+</p>
 </body>
 </html>
 
