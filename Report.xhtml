@@ -19,7 +19,7 @@ Validation</title>
 <h2>Introduction</h2>
 <p>Dans ce BE nous allons construire une application XHTML valide pour mettre en forme des données relatives à la ponctualté mensuelle des trains de banlieue parisiens entre janvier 2013 et août 2015. Le présent rapport ne résume pas toute la démarche, il ne mentionne que les points caratéristiques.</p>
 
-<h2>Partie A : ce qu'on a essayé</h2>
+<h2>Partie A : Travail réalisé</h2>
 
 <h3>Structure du document XML</h3>
 <p> La structure du XML est factorisée au possible : même le type de ligne (RER ou transilien) a mis en facteur. Ainsi, nous n'avons absolument aucune donnée redondante.
@@ -43,12 +43,12 @@ Validation</title>
 </p>
 
 <h3>Ajout d'en-têtes</h3>
-<p>Au sommet de chacune des tables figure une en-tête. Comme l'une des données (le nombre de voyageurs à l'heure pour un oyageur en retard) a un nom particulièrement long, le nom complet des en-têtes est remplacé par un seul nom (Les en-têtes deviennent Date, Taux et Nombre). UI,n encart à la fin du document rappelle les titres complets. 
+<p>Au sommet de chacune des tables figure une en-tête. Comme l'une des données (le nombre de voyageurs à l'heure pour un voyageur en retard) a un nom particulièrement long, le nom complet des en-têtes est remplacé par un seul nom (Les en-têtes deviennent Date, Taux et Nombre). Un encart à la fin du document rappelle les titres complets. 
 </p>
 
 
-<h3>Convertisseur csv vers xml</h3>
-<p>Le convertisseur utilise la bibliothèque Python <em>etree</em> pour générer le code XML. Les premières balises sont générées à la main : on place les balises <em>trains</em>, <em>service</em> et les <em>nom_service</em> correspondant à <em>RER</em> et <em>Transilien</em> dans le document XML en formation. Ensuite, le convertisseur Python parcourt le document csv, et examine chaque ligne du fichier. Si la donnée correspond à une ligne (par exemple RER A) déjà rencontrée, les données (date, taux de ponctualité, nombre de voyageurs à l'heure) sont ajoutées à l'intérieur de la balise <em>ligne</em> correspondante. Sinon, une bnouvelle balise <em>ligne</em> est créée, et les données y sont ajoutées.
+<h3>Convertisseur CSV vers XML</h3>
+<p>Le convertisseur utilise la bibliothèque Python <em>etree</em> pour générer le code XML. Les premières balises sont générées à la main : on place les balises <em>trains</em>, <em>service</em> et les <em>nom_service</em> correspondant à <em>RER</em> et <em>Transilien</em> dans le document XML en formation. Ensuite, le convertisseur Python parcourt le document csv, et examine chaque ligne du fichier. Si la donnée correspond à une ligne (par exemple RER A) déjà rencontrée, les données (date, taux de ponctualité, nombre de voyageurs à l'heure) sont ajoutées à l'intérieur de la balise <em>ligne</em> correspondante. Sinon, une nouvelle balise <em>ligne</em> est créée, et les données y sont ajoutées.
 </p>
 <p>Il aurait été possible d'appliquer cette méthode pour le service (conserver une liste des services déjà rencontrés, pour ne créer de nouvelle balise que lorsqu'un nouveau service aparaît), mais comme il n'y a que deux services, cela aurait seulement rendu le code Python plus complexe.
 </p>
@@ -62,19 +62,23 @@ Validation</title>
 <h3>Affichage des valeurs numériques</h3>
 <p>Pour faciliter la mise en page, toutes les valeurs numériques sont affichées à une décimale près. Les valeurs qui comportaient trop de décimales ont été converties en nombres sous Python, arrondies, puis re-converties en chaînes de caractères. 
 </p>
-<p>Le seul problème posé par cette méthode est qu'une des cases (le taux de ponctualité d'un des RER B) est vide, ce qui provoque une erreur quand Python essaye de les convertir en réel. Pour éviter cela, on ne convertit en nombre que lorsque la case est non vide. Lorsqu'on rencontre une case vide, le programme y écrit le mot 'NaN' (il est préférable pour la mise en page de choisir une chaîne aussi longue que les vraies valeurs)
+<p>Le seul problème posé par cette méthode est qu'une des cases (le taux de ponctualité d'un des RER B) est vide, ce qui provoque une erreur quand Python essaye de la convertir en réel. Pour éviter cela, on ne convertit en nombre que lorsque la case est non vide. Lorsqu'on rencontre une case vide, le programme y écrit le mot 'NaN' (il est préférable pour la mise en page de choisir une chaîne aussi longue que les vraies valeurs).
+</p>
 <code>
     roundedNumber = round(float(case),1)  if case != '' else valeur_vide
 		# valeur_vide est une variable prédéfinie qui contient la chaîne de caractères 
 		# qu'on souhaite afficher si la case est vide (dans notre cas,  valeur_vide = 'NaN')
     Taux.text = str(roundedNumber)  
 </code>
+<p>
 Remarque : dans l'exemple ci-dessus, et contrairement à ce que son nom indique, roundedNumber est une chaîne de caractères lorsque la case est vide. Python ne renvoie pas d'erreur lorsqu'on appelle la fonction str() (conversion en chaîne de caractères) avec une chaîne. 
 </p>
 
-<h2>Partie B : ce qu'on a essayé, qui marche pas</h2>
-<p>Problèmes adaptation avec CSS ?</p>
+<h2>Partie B : Problèmes rencontrés</h2>
+<h3>Mise en forme CSS</h3>
+<p>La mise en page et la présentation des données est un aspect crucial : il s'agit de permettre à la fois une lecture ergonomique, efficace et compacte. Il a onc été choisi d'utiliser des tableaux pour afficher les données des différentes lignes. L'agencement de ces tableaux entre eux, et le côté <em>responsive</em> de la page ont été résolus grâce à la propriété <em>flex</em> qui permet de gérer différentes tailles de fenêtres. En particulier, la propriété <em>row wrap</em> permet de faire passer les tableaux à l'étage du dessous lorsque la place manque dans l'étage courant. En outre, la police s'adapte en fonction de la taille de la fenêtre, et permet une lecture aisée sur tous les types de terminaux.</p>
 
+<p>Les grands tableaux présentent également un problème de lisibilité, et de confusion entre les lignes. Ce problème peut être résolu grâce au sélecteur <em>:nth-child(even)</em> qui permet de donner une couleur différente aux lignes paires du tableau. Une autre couleur sur le <em>hover</em> permet de mettre l'emphase sur la ligne courante.</p>
 
 <h2>Conclusion</h2>
 <p>Ce BE nous aura permis de mettre en pratique les premiers cours théoriques que nous avons reçu. Une certaine partie du code que nous avons écrit ne peut être utilisée qu'avec le fichier des ponctualités des transiliens, mais le code pourrait être aisément adapté à d'autres exemples. 
@@ -82,12 +86,4 @@ Remarque : dans l'exemple ci-dessus, et contrairement à ce que son nom indique,
 
 </body>
 </html>
-
-
-
-
-
-
-
-
 

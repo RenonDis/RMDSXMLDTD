@@ -28,7 +28,7 @@ h3  {
     }
 
 body { 
-    margin:5%;
+    padding:5%;
     }
 
 /* Headings */
@@ -54,7 +54,7 @@ h2  {
     }
 h3  { 
     display:block;
-    border-left: thick double #000;
+    border-left: double #000;
     margin-top:1%; 
     margin-bottom:1%;
     padding:0.5% 5%;
@@ -93,7 +93,7 @@ li  {
     font-size:1em; 
     font-weight:400; /* Regular */ 
     line-height:1.5em; 
-    margin-right: 10%;
+    margin: 3%;
     }
     
 h2  {
@@ -112,7 +112,7 @@ div.requirements p:last-child   {
 /* Other bits & bobs */
 em,
 strong  {
-    font-style:normal; 
+    font-style:italic; 
     font-weight:400; 
     }
 
@@ -142,6 +142,10 @@ footer  {
     }
 
 code {
+    margin-left:20%;
+    margin-top:5%;
+    padding-left:6%;
+    border-left: solid 1px #999;
     white-space: pre-wrap;
     display: block;
     }
@@ -222,7 +226,6 @@ code {
 }
 
 
-body                { width:100%; }
 
     /* ---------------------------------------------------------------------------------------------------------- 
     05 Tables ---------------------------------------------------------------------------------------------------
